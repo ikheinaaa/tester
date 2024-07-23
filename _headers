@@ -1,2 +1,3 @@
 /* 
   Permissions-Policy: accelerometer=(), camera=(), geolocation=(), magnetometer=(), microphone=(), usb=()
+ Permissions-Policy: interest-cohort=()
