@@ -1,0 +1,2 @@
+/* 
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), magnetometer=(), microphone=(), usb=()
