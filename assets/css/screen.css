@@ -1,7 +1,5 @@
 /* 
-Template Name: Mediumish 
-Copyright: Sal, WowThemes.net, https://www.wowthemes.net 
-License: https://www.wowthemes.net/freebies-license/ 
+Template Name: 
 */
 @media screen and (min-width:1500px) {
     html { font-size:18px; } /* Increase the font size on higher resolutions */
@@ -12,7 +10,7 @@ License: https://www.wowthemes.net/freebies-license/
 }
 
 a {
-    color: #00ab6b;
+    color: #0089ff;
     transition: all 0.2s;
 }
 
@@ -337,7 +335,7 @@ span.post-read-more a:hover {
 }
 
 blockquote {
-    border-left: 4px solid #00ab6b;
+    border-left: 4px solid #0089ff;
     padding: 0 20px;
     font-style: italic;
     color: rgba(0, 0, 0, .5);
