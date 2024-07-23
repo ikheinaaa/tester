@@ -19,15 +19,51 @@
 
 {% if jekyll.environment == 'production' %}
  <!-- change your GA id in _config.yml -->
+ <div id="ga-placeholder" style="height: 1px;"></div>
  <script>
- (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
- ga('create', '{{site.google_analytics}}', 'auto');
- ga('send', 'pageview');
+   document.addEventListener('DOMContentLoaded', function() {
+     var gaPlaceholder = document.getElementById('ga-placeholder');
+
+     function loadGA() {
+       var script = document.createElement('script');
+       script.src = 'https://www.google-analytics.com/analytics.js';
+       script.async = true;
+       document.head.appendChild(script);
+
+       script.onload = function() {
+         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+         ga('create', '{{ site.google_analytics }}', 'auto');
+         ga('send', 'pageview');
+       };
+     }
+
+     if ('IntersectionObserver' in window) {
+       var observer = new IntersectionObserver(function(entries, observer) {
+         entries.forEach(function(entry) {
+           if (entry.isIntersecting) {
+             loadGA();
+             observer.unobserve(gaPlaceholder);
+           }
+         });
+       }, { threshold: [0] });
+
+       observer.observe(gaPlaceholder);
+     } else {
+       // Fallback if IntersectionObserver is not supported
+       window.addEventListener('scroll', function onScroll() {
+         if (gaPlaceholder.getBoundingClientRect().top < window.innerHeight) {
+           loadGA();
+           window.removeEventListener('scroll', onScroll);
+         }
+       });
+     }
+   });
  </script>
 {% endif %}
+
 
 {% capture layout %}{% if page.layout %}layout-{{ page.layout }}{% endif %}{% endcapture %}
 <body class="{{layout}}">
@@ -151,7 +187,7 @@
  <!-- Scripts ================================================== -->
  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>-->
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
- <script src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
+ <!--<script src="{{ site.baseurl }}/assets/js/mediumish.js"></script>-->
  {% if site.lazyimages == "enabled" %}
  <script src="{{ site.baseurl }}/assets/js/lazyload.js"></script>
  {% endif %}
