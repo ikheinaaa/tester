@@ -1,5 +1,7 @@
 /* 
-Template Name: 
+Template Name: Mediumish 
+Copyright: Sal, WowThemes.net, https://www.wowthemes.net 
+License: https://www.wowthemes.net/freebies-license/ 
 */
 @media screen and (min-width:1500px) {
     html { font-size:18px; } /* Increase the font size on higher resolutions */
@@ -773,7 +775,6 @@ iframe {
         height: 350px;
         border-radius: 0;
         background-color: #000; /* Ubah ke warna hitam */
-        background-size: cover;
     }
 
     .jumbotron.fortags .col-md-4 {
@@ -795,6 +796,31 @@ iframe {
 
 .jumbotron.fortags a {
     padding: 5px 10px 7px;
+    background: #f5f5dc; /* Warna krem */
+    border-radius: 30px;
+    color: #000; /* Teks hitam */
+    font-weight: 500;
+    text-transform: lowercase;
+    font-size: 0.8rem;
+    display: inline-block;
+    transition: background 0.3s; /* Tambahkan transisi untuk efek hover */
+}
+
+.jumbotron.fortags a:hover,
+.jumbotron.fortags a:focus {
+    background: #f00; /* Warna merah saat tombol diklik atau dihover */
+    color: #fff; /* Teks putih saat tombol diklik atau dihover */
+}
+
+.layout-page .jumbotron.fortags {
+    display: none;
+}
+
+.mb-30px {
+    margin-bottom: 30px;
+}
+
+    padding: 5px 10px 7px;
     background: #222;
     border-radius: 30px;
     color: #fff;
@@ -811,7 +837,6 @@ iframe {
 .mb-30px {
     margin-bottom: 30px;
 }
-
 
 .flex-first {
     -webkit-box-ordinal-group: 0;
